@@ -1,0 +1,30 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "dev": "ts-node src/server.ts",
+  "build": "tsc",
+  "start": "node dist/server.js",
+  "migration:generate": "npx dotenv-cli -e .env -- npx typeorm-ts-node-commonjs migration:generate -d src/database/data-source.ts",
+  "migration:run": "npx dotenv-cli -e .env -- npx typeorm-ts-node-commonjs migration:run -d src/database/data-source.ts",
+  "migration:revert": "npx dotenv-cli -e .env -- npx typeorm-ts-node-commonjs migration:revert -d src/database/data-source.ts"
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "@types/pg": "^8.18.0",
+    "dotenv-cli": "^11.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "pg": "^8.20.0",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.28"
+  }
+}
