@@ -3,10 +3,13 @@
 import { Router, Request, Response } from 'express'
 import { AppDataSource } from '../database/data-source'
 import authRoutes from '../modules/auth/auth.routes'
+import usersRoutes from '../modules/users/users.routes'
+import barbershopsRoutes from '../modules/barbershops/barbershops.routes'
+import barbershopServicesRoutes from '../modules/barbershop-services/barbershop-services.routes'
 
 const router = Router()
 
-// ─── Health Check ─────────────────────────────────────────────────────────────
+// ─── Health Check ──────────────────────────────────────────────────────────────
 router.get('/health', (_req: Request, res: Response) => {
   const isDbConnected = AppDataSource.isInitialized
 
@@ -18,7 +21,10 @@ router.get('/health', (_req: Request, res: Response) => {
   })
 })
 
-// ─── Módulos ──────────────────────────────────────────────────────────────────
+// ─── Módulos ───────────────────────────────────────────────────────────────────
 router.use('/auth', authRoutes)
+router.use('/users', usersRoutes)
+router.use('/barbershops', barbershopsRoutes)
+router.use('/services', barbershopServicesRoutes)
 
 export default router
