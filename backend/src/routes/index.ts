@@ -2,6 +2,7 @@
 
 import { Router, Request, Response } from 'express'
 import { AppDataSource } from '../database/data-source'
+import authRoutes from '../modules/auth/auth.routes'
 
 const router = Router()
 
@@ -16,5 +17,8 @@ router.get('/health', (_req: Request, res: Response) => {
     environment: process.env.NODE_ENV ?? 'development',
   })
 })
+
+// ─── Módulos ──────────────────────────────────────────────────────────────────
+router.use('/auth', authRoutes)
 
 export default router
