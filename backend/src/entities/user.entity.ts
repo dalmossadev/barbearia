@@ -1,4 +1,5 @@
-import 'reflect-metadata'
+// src/entities/user.entity.ts
+
 import {
   Column,
   CreateDateColumn,
@@ -8,6 +9,11 @@ import {
   UpdateDateColumn,
 } from 'typeorm'
 import { Booking } from './booking.entity'
+
+export enum UserRole {
+  USER = 'USER',
+  ADMIN = 'ADMIN',
+}
 
 @Entity('users')
 export class User {
@@ -22,6 +28,13 @@ export class User {
 
   @Column({ length: 255 })
   password: string
+
+  @Column({
+    type: 'enum',
+    enum: UserRole,
+    default: UserRole.USER,
+  })
+  role: UserRole
 
   @OneToMany(() => Booking, (booking) => booking.user)
   bookings: Booking[]

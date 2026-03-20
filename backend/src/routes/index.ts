@@ -7,6 +7,7 @@ import usersRoutes from '../modules/users/users.routes'
 import barbershopsRoutes from '../modules/barbershops/barbershops.routes'
 import barbershopServicesRoutes from '../modules/barbershop-services/barbershop-services.routes'
 import bookingsRoutes from '../modules/bookings/bookings.routes'
+import adminRoutes from '../modules/admin/admin.routes'
 
 const router = Router()
 
@@ -28,5 +29,6 @@ router.use('/users', usersRoutes)
 router.use('/barbershops', barbershopsRoutes)
 router.use('/services', barbershopServicesRoutes)
 router.use('/bookings', bookingsRoutes)
+router.use('/admin', adminRoutes)
 
 export default router
