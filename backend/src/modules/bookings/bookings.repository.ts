@@ -27,6 +27,13 @@ export class BookingsRepository {
     })
   }
 
+  public async findAll(): Promise<Booking[]> {
+    return this.repository.find({
+      relations: ['user', 'barbershop', 'service'],
+      order: { date: 'DESC' },
+    })
+  }
+
   public async findConflict(
     barbershopId: string,
     serviceId: string,
