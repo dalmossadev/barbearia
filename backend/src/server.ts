@@ -23,6 +23,12 @@ export class Server {
   }
 
   private setupMiddlewares(): void {
+    // Raw body para webhook Stripe — deve vir antes do express.json()
+    this.app.use(
+      '/api/payments/webhook',
+      express.raw({ type: 'application/json' }),
+    )
+
     this.app.use(express.json())
     this.app.use(express.urlencoded({ extended: true }))
     this.app.use(

@@ -8,6 +8,8 @@ interface EnvConfig {
   PORT: number
   JWT_SECRET: string
   JWT_EXPIRES_IN: string
+  STRIPE_SECRET_KEY: string
+  STRIPE_WEBHOOK_SECRET: string
 }
 
 const getEnv = (key: string, fallback?: string): string => {
@@ -28,4 +30,6 @@ export const env: EnvConfig = {
   PORT: parseInt(getEnv('PORT', '3000'), 10),
   JWT_SECRET: getEnv('JWT_SECRET', 'changeme_secret'),
   JWT_EXPIRES_IN: getEnv('JWT_EXPIRES_IN', '7d'),
+  STRIPE_SECRET_KEY: getEnv('STRIPE_SECRET_KEY', ''),
+  STRIPE_WEBHOOK_SECRET: getEnv('STRIPE_WEBHOOK_SECRET', ''),
 }
